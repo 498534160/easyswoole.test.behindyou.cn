@@ -20,6 +20,7 @@ class RedisPool
         if (!empty($config)) {
             $redisConfig = new RedisConfig($config);
             $redisPoolConfig = Redis::getInstance()->register('redis', $redisConfig);
+
             $redisPoolConfig->setMinObjectNum($config['POOL_MIN_NUM']);
             $redisPoolConfig->setMaxObjectNum($config['POOL_MAX_NUM']);
             $redisPoolConfig->setAutoPing($config['POOL_TIME_OUT']);

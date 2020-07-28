@@ -3,6 +3,7 @@ namespace EasySwoole\EasySwoole;
 
 
 use App\LibSingleton\HotReload;
+use App\LibSingleton\Queue;
 use App\LibSingleton\RedisPool;
 use EasySwoole\EasySwoole\Swoole\EventRegister;
 use EasySwoole\EasySwoole\AbstractInterface\Event;
@@ -17,19 +18,23 @@ class EasySwooleEvent implements Event
         // TODO: Implement initialize() method.
         date_default_timezone_set('Asia/Shanghai');
 
-
         // TODO redispoole 注册
         RedisPool::getInstance();
+
+
     }
 
     public static function mainServerCreate(EventRegister $register)
     {
         // TODO: Implement mainServerCreate() method.
 
-
+        // TODO queue消费队列注册
+        Queue::getInstance();
 
         // TODO 热重载注册
         HotReload::getInstance();
+
+
     }
 
     public static function onRequest(Request $request, Response $response): bool
